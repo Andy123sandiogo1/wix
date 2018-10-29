@@ -1,0 +1,10 @@
+https://et.water.ca.gov/api/data?appKey=2298ecc1-317c-4f19-a8d0-948ca1ae719f&targets=250&startDate=2018-03-19&endDate=2018-05-11&dataItems=day-eto
+- Add this api to the upper left corner of the graph that says [Last 7 ET (in).] that just sums the ET from the last 7 days and multiplies it by .53
+- Make the red blue yellow lines moveable by .5 not just whole numbers
+
+http://et.water.ca.gov/api/data?appKey=2298ecc1-317c-4f19-a8d0-948ca1ae719f&targets=5&startDate=2010-01-01&endDate=2010-01-01&dataItems=day-asce-eto,hly-asce-eto
+
+
+http://et.water.ca.gov/api/data?appKey=2298ecc1-317c-4f19-a8d0-948ca1ae719f&targets=2,8,127&startDate=2010-01-01&endDate=2010-01-05
+
+https://www.freelancer.com/projects/graphic-design/experienced-creative-designer-for-crypto/?w=f#/proposals

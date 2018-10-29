@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>myproject</title>
+  </head>
+  <script>
+        const text = "D:\\Develop\\wix\\sample.xml";
+        console.log(xmlToJson(text));
+        function xmlToJson(xml) {
+
+            console.log("xml");
+            // Create the return object
+            var obj = {};
+
+            if (xml.nodeType == 1) { // element
+                // do attributes
+                if (xml.attributes.length > 0) {
+                obj["@attributes"] = {};
+                    for (var j = 0; j < xml.attributes.length; j++) {
+                        var attribute = xml.attributes.item(j);
+                        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+                    }
+                }
+            } else if (xml.nodeType == 3) { // text
+                obj = xml.nodeValue;
+            }
+
+            // do children
+            if (xml.hasChildNodes()) {
+                for(var i = 0; i < xml.childNodes.length; i++) {
+                    var item = xml.childNodes.item(i);
+                    var nodeName = item.nodeName;
+                    if (typeof(obj[nodeName]) == "undefined") {
+                        obj[nodeName] = xmlToJson(item);
+                    } else {
+                        if (typeof(obj[nodeName].push) == "undefined") {
+                            var old = obj[nodeName];
+                            obj[nodeName] = [];
+                            obj[nodeName].push(old);
+                        }
+                        obj[nodeName].push(xmlToJson(item));
+                    }
+                }
+            }
+            return obj;
+        };
+  </script>
+  <body>
+    <p id="demo"></p>
+</html>  
+
+<et-xml xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<data>
+    <provider name="cimis" type="station" owner="water.ca.gov">
+        <record date="2018-03-19" julian="78" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily">
+            <day-eto qc=" " unit="(in)">0.12</day-eto>
+        </record>
+        <record date="2018-03-20" julian="79" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily">
+                <day-eto qc=" " unit="(in)">0.02</day-eto></record><record date="2018-03-21" julian="80" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.05</day-eto>
+        </record><record date="2018-03-22" julian="81" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.13</day-eto></record><record date="2018-03-23" julian="82" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.14</day-eto></record><record date="2018-03-24" julian="83" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.15</day-eto></record><record date="2018-03-25" julian="84" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.13</day-eto></record><record date="2018-03-26" julian="85" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.21</day-eto></record><record date="2018-03-27" julian="86" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.25</day-eto></record><record date="2018-03-28" julian="87" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.25</day-eto></record><record date="2018-03-29" julian="88" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.23</day-eto></record><record date="2018-03-30" julian="89" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.16</day-eto></record><record date="2018-03-31" julian="90" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.15</day-eto></record><record date="2018-04-01" julian="91" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.17</day-eto></record><record date="2018-04-02" julian="92" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc="R" unit="(in)">0.18</day-eto></record><record date="2018-04-03" julian="93" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.19</day-eto></record><record date="2018-04-04" julian="94" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.14</day-eto></record><record date="2018-04-05" julian="95" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.05</day-eto></record><record date="2018-04-06" julian="96" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.01</day-eto></record><record date="2018-04-07" julian="97" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.2</day-eto></record><record date="2018-04-08" julian="98" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.16</day-eto></record><record date="2018-04-09" julian="99" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.16</day-eto></record><record date="2018-04-10" julian="100" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.08</day-eto></record><record date="2018-04-11" julian="101" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.09</day-eto></record><record date="2018-04-12" julian="102" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.16</day-eto></record><record date="2018-04-13" julian="103" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.19</day-eto></record><record date="2018-04-14" julian="104" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.2</day-eto></record><record date="2018-04-15" julian="105" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.13</day-eto></record><record date="2018-04-16" julian="106" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.07</day-eto></record><record date="2018-04-17" julian="107" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.15</day-eto></record><record date="2018-04-18" julian="108" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.12</day-eto></record><record date="2018-04-19" julian="109" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.21</day-eto></record><record date="2018-04-20" julian="110" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.2</day-eto></record><record date="2018-04-21" julian="111" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.2</day-eto></record><record date="2018-04-22" julian="112" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.2</day-eto></record><record date="2018-04-23" julian="113" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.24</day-eto></record><record date="2018-04-24" julian="114" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.21</day-eto></record><record date="2018-04-25" julian="115" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.21</day-eto></record><record date="2018-04-26" julian="116" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.21</day-eto></record><record date="2018-04-27" julian="117" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.22</day-eto></record><record date="2018-04-28" julian="118" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.14</day-eto></record><record date="2018-04-29" julian="119" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.12</day-eto></record><record date="2018-04-30" julian="120" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.17</day-eto></record><record date="2018-05-01" julian="121" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.24</day-eto></record><record date="2018-05-02" julian="122" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.22</day-eto></record><record date="2018-05-03" julian="123" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.21</day-eto></record><record date="2018-05-04" julian="124" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.21</day-eto></record><record date="2018-05-05" julian="125" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.17</day-eto></record><record date="2018-05-06" julian="126" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.2</day-eto></record><record date="2018-05-07" julian="127" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.22</day-eto></record><record date="2018-05-08" julian="128" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.25</day-eto></record><record date="2018-05-09" julian="129" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.22</day-eto></record><record date="2018-05-10" julian="130" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.21</day-eto></record><record date="2018-05-11" julian="131" station="250" standard="english" zip-code="95987, 95955, 95932, 95912" scope="daily"><day-eto qc=" " unit="(in)">0.37</day-eto></record></provider></data></et-xml>
